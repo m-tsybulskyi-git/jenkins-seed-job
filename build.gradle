@@ -1,0 +1,26 @@
+group 'com.mtsybulskyi'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'groovy'
+apply plugin: 'idea'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven {
+        url "https://repo.jenkins-ci.org/releases"
+    }
+}
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy:2.4.5'
+    compile ('com.google.guava:guava:11.0.1') {
+        exclude module: 'jsr305'
+    }
+    compile ('org.jenkins-ci.plugins:job-dsl-core:1.53') {
+        exclude module: 'ivy'
+    }
+    testCompile 'org.spockframework:spock-core:1.1-groovy-2.4'
+    testCompile 'org.jenkins-ci:version-number:1.1'
+}
+
